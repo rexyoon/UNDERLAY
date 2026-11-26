@@ -1,0 +1,14 @@
+# 빌드 산출물 (BE/build/ 등 어느 깊이든)
+build/
+out/
+
+# vcpkg 매니페스트 모드 설치 폴더
+vcpkg_installed/
+
+# Visual Studio
+.vs/
+*.user
+CMakeUserPresets.json
+
+# Claude Code 개인 설정
+.claude/settings.local.json

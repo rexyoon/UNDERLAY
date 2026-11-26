@@ -1,0 +1,10 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "underlay",
+  "version-string": "0.1.0",
+  "builtin-baseline": "8a8f873fe679ce404d25639fe354631323b1b1a9",
+  "dependencies": [
+    "spdlog",
+    "gtest"
+  ]
+}

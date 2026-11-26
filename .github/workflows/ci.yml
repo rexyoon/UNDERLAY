@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: BE
+    env:
+      VCPKG_ROOT: ${{ github.workspace }}/vcpkg
+    steps:
+      - uses: actions/checkout@v4
+
+      # vcpkg.json의 builtin-baseline 커밋이 들어 있는 vcpkg를 새로 받는다
+      - name: Set up vcpkg
+        working-directory: ${{ github.workspace }}
+        run: |
+          git clone https://github.com/microsoft/vcpkg vcpkg
+          ./vcpkg/bootstrap-vcpkg.bat -disableMetrics
+
+      - name: Cache vcpkg binaries
+        uses: actions/cache@v4
+        with:
+          path: ~/AppData/Local/vcpkg/archives
+          key: vcpkg-${{ hashFiles('BE/vcpkg.json') }}
+
+      # cl.exe와 Ninja가 PATH에 잡히도록 MSVC 개발자 환경을 연다
+      - uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+
+      - name: Configure
+        run: cmake --preset windows-debug
+
+      - name: Build
+        run: cmake --build --preset windows-debug
+
+      - name: Test
+        run: ctest --preset windows-debug --output-on-failure

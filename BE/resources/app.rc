@@ -1,0 +1,32 @@
+// UNDERLAY resource script (ASCII only: rc.exe reads it in the ANSI code page).
+// The manifest is added by CMake as app.manifest - do not add RT_MANIFEST here (duplicate).
+#include <winres.h>
+#include "resource.h"
+
+IDI_APP_ICON ICON "app.ico"
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 0,1,0,0
+ PRODUCTVERSION 0,1,0,0
+ FILEFLAGSMASK 0x3fL
+ FILEOS VOS_NT_WINDOWS32
+ FILETYPE VFT_APP
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041204b0"
+        BEGIN
+            VALUE "FileDescription", "UNDERLAY live wallpaper"
+            VALUE "FileVersion", "0.1.0.0"
+            VALUE "InternalName", "underlay"
+            VALUE "OriginalFilename", "underlay.exe"
+            VALUE "ProductName", "UNDERLAY"
+            VALUE "ProductVersion", "0.1.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 1200
+    END
+END
