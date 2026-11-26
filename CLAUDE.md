@@ -56,6 +56,8 @@
 3. 작은 단위 하나를 끝내면 빌드·테스트를 돌리고, 눈으로 확인할 것(바탕화면에서 무엇이 보여야 하는지)을 알려 준 뒤 멈춘다.
 4. Phase가 끝나면 완료 보고를 내고 PROGRESS.md를 갱신한 뒤 멈춘다. 커밋은 내 승인 후에.
 - git push, 브랜치 삭제, 레지스트리 쓰기(자동 실행 외), 바탕화면 설정 변경은 반드시 먼저 묻는다.
+  예외(2026-11-26 결정): Phase가 끝나 완료 보고·커밋까지 마치면 origin(https://github.com/rexyoon/UNDERLAY.git)의 main에
+  묻지 않고 push한다. Phase 중간의 push는 여전히 먼저 묻는다.
 
 ## 아키텍처 규칙 (docs/spec/02-architecture.md)
 - 폴더: BE/src/{app, core, desktop, monitor, render, wallpaper, audio, policy, library, ui}, 네임스페이스 underlay::<폴더>.
